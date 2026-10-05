@@ -179,28 +179,25 @@
 {{ end }}
 
 {{ with .Params.contact }}
-<section id="contact" class="section">
-  <div class="container split split-contact">
-    <div>
-      <header class="section-head reveal">
-        <p class="eyebrow">{{ .eyebrow }}</p>
-        <h2>{{ .title }}</h2>
-        <p>{{ .text }}</p>
-      </header>
-      <p class="actions reveal">
-        <a class="button" href="{{ $mail }}">{{ partial "icon.html" (dict "name" "mail") }} {{ $p.email }}</a>
-      </p>
-      <h3 class="small-title">{{ T "hours" }}</h3>
-      {{ partial "hours.html" $ }}
-    </div>
-    <div class="contact-side">
-      {{ partial "img.html" (dict "name" .image "ratio" "3:2" "sizes" "(min-width: 60rem) 34rem, 100vw" "class" "rounded reveal") }}
+<section id="contact" class="contact">
+  <div class="contact-media">
+    {{ partial "img.html" (dict "name" .image "sizes" "(min-width: 60rem) 50vw, 100vw") }}
+  </div>
+  <div class="contact-panel">
+    <div class="contact-inner">
+      <p class="eyebrow">{{ .eyebrow }}</p>
+      <h2>{{ .title }}</h2>
+      <p class="contact-text">{{ .text }}</p>
+      <a class="mail-cta" href="{{ $mail }}">
+        {{ partial "icon.html" (dict "name" "mail") }}
+        <span>{{ $p.email }}</span>
+        {{ partial "icon.html" (dict "name" "arrow" "class" "mail-arrow") }}
+      </a>
       <dl class="facts">
-        <div>{{ partial "icon.html" (dict "name" "pin") }}<dt>{{ T "address" }}</dt><dd>{{ $p.name }}<br>{{ $p.address.street }}, {{ partial "t.html" (dict "v" $p.address.floor "where" "data/practice.yaml, address.floor") }}<br>{{ $p.address.postcode }} {{ $p.address.city }}</dd></div>
+        <div>{{ partial "icon.html" (dict "name" "pin") }}<dt>{{ T "address" }}</dt><dd>{{ $p.address.street }}, {{ partial "t.html" (dict "v" $p.address.floor "where" "data/practice.yaml, address.floor") }}<br>{{ $p.address.postcode }} {{ $p.address.city }}</dd></div>
         <div>{{ partial "icon.html" (dict "name" "tram") }}<dt>{{ T "getting_here" }}</dt><dd>{{ partial "t.html" (dict "v" $p.transport "where" "data/practice.yaml, transport") }}</dd></div>
         <div>{{ partial "icon.html" (dict "name" "access") }}<dt>{{ T "accessibility" }}</dt><dd>{{ partial "t.html" (dict "v" $p.access "where" "data/practice.yaml, access") }}</dd></div>
       </dl>
-      {{ partial "map.html" . }}
     </div>
   </div>
 </section>

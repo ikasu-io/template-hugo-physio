@@ -9,8 +9,8 @@
 
 A one-page website in German and English for a small health practice:
 services, what happens at the first appointment, the team, upcoming
-courses, prices, opening hours with today highlighted, contact and a
-drawn map — plus the imprint and privacy pages a German site needs.
+courses, prices, opening hours with today highlighted and a contact
+band with directions — plus the imprint and privacy pages a German site needs.
 
 - [Hugo](https://gohugo.io) only: no Node, no `package.json`, no install step
 - German at `/`, English at `/en/`, with `hreflang` links and a language switch

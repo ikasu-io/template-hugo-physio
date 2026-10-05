@@ -15,6 +15,6 @@ site. They do not show real places, people or products.
 Images from Gemini carry Google's invisible SynthID watermark, which marks
 them as AI-generated.
 
-The logo, the favicon, the icons and the map are SVG drawings made for
+The logo, the favicon and the icons are SVG drawings made for
 this site, under the same licence. The font Instrument Sans is under the
 SIL Open Font License (`static/fonts/OFL-InstrumentSans.txt`).

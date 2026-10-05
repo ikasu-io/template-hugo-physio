@@ -1,11 +1,8 @@
 {{- $p := hugo.Data.practice -}}
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div>
-      <p class="brand brand-footer">{{ partial "logo.html" . }} <span>{{ $p.name }}</span></p>
-      <p>{{ $p.address.street }}<br>{{ $p.address.postcode }} {{ $p.address.city }}</p>
-      <p><a href="mailto:{{ $p.email }}">{{ $p.email }}</a></p>
-    </div>
+    <p class="brand">{{ partial "logo.html" . }} <span>{{ $p.name }}</span></p>
+    <p class="footer-address">{{ $p.address.street }} · {{ $p.address.postcode }} {{ $p.address.city }} · <a href="mailto:{{ $p.email }}">{{ $p.email }}</a></p>
     <ul class="footer-links">
       {{- with site.GetPage "/impressum" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
       {{- with site.GetPage "/datenschutz" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
