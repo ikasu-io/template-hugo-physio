@@ -1,0 +1,14 @@
+{{- /* Opening hours from data/practice.yaml. Today's row is marked by
+assets/js/today.js in the visitor's browser. */ -}}
+{{- $monday := time.AsTime "2024-01-01" -}}
+<table class="hours">
+  <caption class="visually-hidden">{{ T "hours" }}</caption>
+  <tbody>
+  {{- range hugo.Data.practice.hours }}
+    <tr data-day="{{ .day }}">
+      <th scope="row">{{ time.Format "Monday" ($monday.AddDate 0 0 (sub .day 1)) }}</th>
+      <td>{{ with .hours }}{{ range $i, $r := . }}{{ if $i }}, {{ end }}{{ replace $r "-" "–" }}{{ end }}{{ else }}<span class="muted">{{ T "closed" }}</span>{{ end }}</td>
+    </tr>
+  {{- end }}
+  </tbody>
+</table>

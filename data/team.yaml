@@ -1,0 +1,42 @@
+# The team, in this order. No photos on purpose: initials are drawn from
+# `name`. `languages` are shown as written.
+- name: Hanna Roeder
+  role:
+    de: Inhaberin, Physiotherapeutin
+    en: Owner, physiotherapist
+  focus:
+    de: Manuelle Therapie, Kiefer (CMD)
+    en: Manual therapy, jaw (TMD)
+  languages: [Deutsch, English]
+- name: Mehmet Aydın
+  role:
+    de: Physiotherapeut
+    en: Physiotherapist
+  focus:
+    de: Sportphysiotherapie, Knie und Schulter
+    en: Sports physiotherapy, knee and shoulder
+  languages: [Deutsch, English, Türkçe]
+- name: Julia Brandt
+  role:
+    de: Physiotherapeutin
+    en: Physiotherapist
+  focus:
+    de: Lymphdrainage, Ödemtherapie
+    en: Lymph drainage, oedema therapy
+  languages: [Deutsch]
+- name: Tobias Kern
+  role:
+    de: Sporttherapeut
+    en: Sports therapist
+  focus:
+    de: Gerätetraining, Rückenkurse
+    en: Training therapy, back courses
+  languages: [Deutsch, English]
+- name: Sofie Lund
+  role:
+    de: Physiotherapeutin
+    en: Physiotherapist
+  focus:
+    de: Beckenboden, Rückbildung
+    en: Pelvic floor, postnatal recovery
+  languages: [Deutsch, English, Dansk]

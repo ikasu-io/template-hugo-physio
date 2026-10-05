@@ -1,0 +1,208 @@
+{{ define "main" }}
+{{- $p := hugo.Data.practice -}}
+{{- $mail := printf "mailto:%s?subject=%s" $p.email (.Params.contact.subject | urlquery) -}}
+
+{{ with .Params.hero }}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">{{ .eyebrow }}</p>
+      <h1>{{ .title }}</h1>
+      <p class="lead">{{ .text }}</p>
+      <p class="actions">
+        <a class="button" href="#contact">{{ T "cta" }} {{ partial "icon.html" (dict "name" "arrow") }}</a>
+        <a class="button button-ghost" href="#services">{{ .secondary }}</a>
+      </p>
+    </div>
+    <div class="hero-card">
+      <h2 class="card-title">{{ partial "icon.html" (dict "name" "clock") }} {{ T "hours" }}</h2>
+      {{ partial "hours.html" $ }}
+      <p class="hero-address">{{ partial "icon.html" (dict "name" "pin") }} {{ $p.address.street }}, {{ $p.address.city }}</p>
+    </div>
+  </div>
+  <div class="container">
+    {{ partial "img.html" (dict "name" .image "ratio" "21:9" "sizes" "(min-width: 76rem) 72rem, 100vw" "class" "hero-image" "eager" true) }}
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.services }}
+<section id="services" class="section">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow">{{ .eyebrow }}</p>
+      <h2>{{ .title }}</h2>
+      <p>{{ .text }}</p>
+    </header>
+    <ul class="services">
+      {{- range hugo.Data.services }}
+      {{- $where := printf "data/services.yaml, %s" .icon }}
+      <li class="service reveal">
+        <span class="service-icon">{{ partial "icon.html" (dict "name" .icon) }}</span>
+        <h3>{{ partial "t.html" (dict "v" .name "where" (printf "%s: name" $where)) }}</h3>
+        <p>{{ partial "t.html" (dict "v" .text "where" (printf "%s: text" $where)) }}</p>
+      </li>
+      {{- end }}
+    </ul>
+    {{- with .images }}
+    <div class="gallery">
+      {{- range . }}
+      {{ partial "img.html" (dict "name" . "ratio" "3:2" "sizes" "(min-width: 76rem) 36rem, (min-width: 40rem) 50vw, 100vw" "class" "rounded reveal") }}
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.first_visit }}
+<section id="first-visit" class="section section-mist">
+  <div class="container split">
+    <div class="split-media reveal">
+      {{ partial "img.html" (dict "name" .image "ratio" "4:5" "sizes" "(min-width: 60rem) 30rem, 100vw" "class" "rounded") }}
+    </div>
+    <div>
+      <header class="section-head">
+        <p class="eyebrow">{{ .eyebrow }}</p>
+        <h2>{{ .title }}</h2>
+      </header>
+      <ol class="steps">
+        {{- range $i, $s := .steps }}
+        <li class="reveal"><span class="step-number">{{ printf "%02d" (add $i 1) }}</span><div><h3>{{ $s.title }}</h3><p>{{ $s.text }}</p></div></li>
+        {{- end }}
+      </ol>
+      <p class="note">{{ .note }}</p>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.team }}
+<section id="team" class="section section-dark">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="eyebrow">{{ .eyebrow }}</p>
+      <h2>{{ .title }}</h2>
+      <p>{{ .text }}</p>
+    </header>
+    <ul class="team">
+      {{- range hugo.Data.team }}
+      {{- $where := printf "data/team.yaml, %s" .name }}
+      <li class="person reveal">
+        <span class="initials" aria-hidden="true">{{ range first 2 (split .name " ") }}{{ substr . 0 1 }}{{ end }}</span>
+        <h3>{{ .name }}</h3>
+        <p class="role">{{ partial "t.html" (dict "v" .role "where" (printf "%s: role" $where)) }}</p>
+        <p>{{ partial "t.html" (dict "v" .focus "where" (printf "%s: focus" $where)) }}</p>
+        <p class="languages"><span class="visually-hidden">{{ T "languages" }}: </span>{{ range .languages }}<span>{{ . }}</span> {{ end }}</p>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.courses }}
+<section id="courses" class="section">
+  <div class="container">
+    <div class="split split-head">
+      <header class="section-head reveal">
+        <p class="eyebrow">{{ .eyebrow }}</p>
+        <h2>{{ .title }}</h2>
+        <p>{{ .text }}</p>
+      </header>
+      <div class="reveal">{{ partial "img.html" (dict "name" .image "ratio" "3:2" "sizes" "(min-width: 60rem) 34rem, 100vw" "class" "rounded") }}</div>
+    </div>
+    {{- $upcoming := slice }}
+    {{- range hugo.Data.courses }}{{ if not ((time.AsTime .start).Before now) }}{{ $upcoming = $upcoming | append . }}{{ end }}{{ end }}
+    {{- with sort $upcoming "start" }}
+    <ul class="courses">
+      {{- range . }}
+      {{- $start := time.AsTime .start }}
+      {{- $where := printf "data/courses.yaml, course starting %s" ($start.Format "2006-01-02") }}
+      {{- $name := partial "t.html" (dict "v" .name "where" (printf "%s: name" $where)) }}
+      <li class="course reveal">
+        <p class="course-date"><span class="day">{{ $start.Day }}</span> <span>{{ time.Format "Jan" $start }}</span></p>
+        <div class="course-body">
+          <h3>{{ $name }}</h3>
+          <p>{{ partial "t.html" (dict "v" .text "where" (printf "%s: text" $where)) }}</p>
+          <p class="course-meta">{{ T "starts" }} {{ time.Format ":date_long" $start }} · {{ T "weekly_on" }} {{ time.Format "Monday" $start }}, {{ replace .time "-" "–" }} · {{ .sessions }} {{ T "sessions" }} · {{ lang.FormatCurrency 0 "EUR" .price }}</p>
+        </div>
+        <p class="course-places">
+          {{- if gt .places 0 }}
+          <span class="badge">{{ .places }} {{ cond (eq .places 1) (T "place_left") (T "places_left") }}</span>
+          <a class="button button-small" href="mailto:{{ $p.email }}?subject={{ printf "%s, %s" $name (time.Format ":date_medium" $start) | urlquery }}">{{ T "book_course" }}</a>
+          {{- else }}
+          <span class="badge badge-full">{{ T "fully_booked" }}</span>
+          {{- end }}
+        </p>
+      </li>
+      {{- end }}
+    </ul>
+    {{- else }}
+    <p class="empty">{{ T "no_courses" }}</p>
+    {{- end }}
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.prices }}
+<section id="prices" class="section section-mist">
+  <div class="container split split-prices">
+    <div>
+      <header class="section-head reveal">
+        <p class="eyebrow">{{ .eyebrow }}</p>
+        <h2>{{ .title }}</h2>
+      </header>
+      <div class="card reveal">
+        <h3>{{ partial "icon.html" (dict "name" "check") }} {{ .statutory_title }}</h3>
+        <p>{{ .statutory_text }}</p>
+      </div>
+      <div class="prices-media reveal">{{ partial "img.html" (dict "name" .image "ratio" "4:5" "sizes" "(min-width: 60rem) 20rem, 60vw" "class" "rounded") }}</div>
+    </div>
+    <div class="card reveal">
+      <h3>{{ .private_title }}</h3>
+      <p>{{ .private_text }}</p>
+      <table class="prices">
+        <tbody>
+        {{- range hugo.Data.prices }}
+          <tr>
+            <th scope="row">{{ partial "t.html" (dict "v" .name "where" (printf "data/prices.yaml, %v €: name" .price)) }} <span class="muted">· {{ .minutes }} {{ T "minutes" }}</span></th>
+            <td>{{ lang.FormatCurrency 2 "EUR" .price }}</td>
+          </tr>
+        {{- end }}
+        </tbody>
+      </table>
+      <p class="muted small">{{ T "per_session" | strings.FirstUpper }}.</p>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.contact }}
+<section id="contact" class="section">
+  <div class="container split split-contact">
+    <div>
+      <header class="section-head reveal">
+        <p class="eyebrow">{{ .eyebrow }}</p>
+        <h2>{{ .title }}</h2>
+        <p>{{ .text }}</p>
+      </header>
+      <p class="actions reveal">
+        <a class="button" href="{{ $mail }}">{{ partial "icon.html" (dict "name" "mail") }} {{ $p.email }}</a>
+      </p>
+      <h3 class="small-title">{{ T "hours" }}</h3>
+      {{ partial "hours.html" $ }}
+    </div>
+    <div class="contact-side">
+      {{ partial "img.html" (dict "name" .image "ratio" "3:2" "sizes" "(min-width: 60rem) 34rem, 100vw" "class" "rounded reveal") }}
+      <dl class="facts">
+        <div>{{ partial "icon.html" (dict "name" "pin") }}<dt>{{ T "address" }}</dt><dd>{{ $p.name }}<br>{{ $p.address.street }}, {{ partial "t.html" (dict "v" $p.address.floor "where" "data/practice.yaml, address.floor") }}<br>{{ $p.address.postcode }} {{ $p.address.city }}</dd></div>
+        <div>{{ partial "icon.html" (dict "name" "tram") }}<dt>{{ T "getting_here" }}</dt><dd>{{ partial "t.html" (dict "v" $p.transport "where" "data/practice.yaml, transport") }}</dd></div>
+        <div>{{ partial "icon.html" (dict "name" "access") }}<dt>{{ T "accessibility" }}</dt><dd>{{ partial "t.html" (dict "v" $p.access "where" "data/practice.yaml, access") }}</dd></div>
+      </dl>
+      {{ partial "map.html" . }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}

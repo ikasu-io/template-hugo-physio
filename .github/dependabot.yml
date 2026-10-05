@@ -1,0 +1,9 @@
+# Monthly updates for the GitHub Actions used in CI. The site itself has
+# no package dependencies; Hugo is pinned in .github/workflows/ci.yml and
+# updated with Ikasu.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

@@ -1,0 +1,8 @@
+{{- /* Returns the current language's text from a `de:`/`en:` pair and
+stops the build, naming the place, when that language is missing.
+  partial "t.html" (dict "v" .name "where" "data/team.yaml, Hanna Roeder: role") */ -}}
+{{- $lang := site.Language.Lang -}}
+{{- $v := "" -}}
+{{- if reflect.IsMap .v }}{{ $v = index .v $lang }}{{ end -}}
+{{- if not $v }}{{ errorf "%s: the %q text is missing" .where $lang }}{{ end -}}
+{{- return $v -}}

@@ -1,0 +1,44 @@
+# Services, in this order. `icon` is one of: hands, spine, drop, run,
+# dumbbell, circle (drawn in layouts/_partials/icon.html).
+- icon: spine
+  name:
+    de: Krankengymnastik
+    en: Physiotherapy
+  text:
+    de: Die Grundlage fast jeder Behandlung — nach Operationen, bei Rückenschmerzen, nach Verletzungen. Mit Übungen, die Sie zu Hause weitermachen können.
+    en: The basis of almost every treatment — after surgery, for back pain, after injuries. With exercises you can carry on with at home.
+- icon: hands
+  name:
+    de: Manuelle Therapie
+    en: Manual therapy
+  text:
+    de: Gezielte Techniken mit den Händen für Gelenke, die blockiert oder eingeschränkt sind. Häufig bei Nacken, Schulter und Kiefer.
+    en: Precise hands-on techniques for joints that are stiff or restricted. Often for the neck, shoulder and jaw.
+- icon: drop
+  name:
+    de: Manuelle Lymphdrainage
+    en: Manual lymph drainage
+  text:
+    de: Sanfte Griffe gegen Schwellungen, etwa nach Operationen oder bei Lymphödem. Auf Wunsch mit Kompressionsbandage.
+    en: Gentle techniques that reduce swelling, for example after surgery or with lymphoedema. With compression bandaging if needed.
+- icon: run
+  name:
+    de: Sportphysiotherapie
+    en: Sports physiotherapy
+  text:
+    de: Zurück in den Sport nach Bänderriss, Kreuzband oder Überlastung — mit Tests, die zeigen, wann Sie wieder so weit sind.
+    en: Back to sport after a sprain, a cruciate ligament or overuse — with tests that show when you are ready again.
+- icon: dumbbell
+  name:
+    de: Gerätegestützte Krankengymnastik
+    en: Medical training therapy
+  text:
+    de: Kraft- und Koordinationstraining an Geräten, angeleitet und mit einem Plan, der mit Ihnen wächst.
+    en: Strength and coordination training on equipment, supervised, with a plan that grows with you.
+- icon: circle
+  name:
+    de: Beckenbodentherapie
+    en: Pelvic floor therapy
+  text:
+    de: Nach der Geburt, bei Inkontinenz oder nach Prostata-OP. In einem eigenen, ruhigen Raum, auf Wunsch auch auf Englisch oder Dänisch.
+    en: After giving birth, for incontinence or after prostate surgery. In a separate quiet room, in English or Danish if you prefer.

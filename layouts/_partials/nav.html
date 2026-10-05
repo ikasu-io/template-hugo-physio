@@ -1,0 +1,5 @@
+{{- /* Section links. On the legal pages they lead back to the home page. */ -}}
+{{- $base := cond .IsHome "" site.Home.RelPermalink -}}
+{{- range slice "services" "first-visit" "team" "courses" "prices" "contact" }}
+<li><a href="{{ $base }}#{{ . }}">{{ T (printf "nav_%s" (replace . "-" "_")) }}</a></li>
+{{- end }}

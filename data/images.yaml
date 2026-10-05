@@ -1,0 +1,23 @@
+# Alt text for every photo in assets/images/, in both languages. A new
+# photo needs a file there and an entry here.
+hero-practice:
+  de: Ein heller Behandlungsraum mit Liege, hohen Sprossenfenstern, Backsteinwand und einer großen Pflanze
+  en: A bright treatment room with a treatment table, tall warehouse windows, a brick wall and a large plant
+hands-shoulder:
+  de: Die Hände eines Therapeuten behandeln Schulter und Rücken einer liegenden Person
+  en: A therapist's hands working on the shoulder and back of a person lying on a treatment table
+training:
+  de: Eine Person, von hinten gesehen, macht im Trainingsbereich eine Kniebeuge, daneben Seilzug und Hanteln
+  en: A person seen from behind doing a squat in the training area, next to a cable machine and dumbbells
+course-room:
+  de: Ein leerer Kursraum mit Matten in zwei Reihen und Gymnastikbällen an der Wand
+  en: An empty course room with mats in two rows and exercise balls against the wall
+reception:
+  de: Ein kleiner heller Empfang mit Holztheke, einer Pflanze und Stühlen an der Wand
+  en: A small bright reception with a wooden counter, a plant and chairs along the wall
+tools:
+  de: Theraband, Massagerolle, Massageöl, ein gerolltes Handtuch und ein Igelball auf einem Holzregal
+  en: A resistance band, a massage roller, massage oil, a rolled towel and a spiky ball on a wooden shelf
+building:
+  de: Ein alter Backsteinspeicher am Kanal mit großen Fenstern im ersten Stock, davor Fahrräder und Straßenbahngleise
+  en: An old brick warehouse on a canal with large first-floor windows, bicycles and tram tracks in front

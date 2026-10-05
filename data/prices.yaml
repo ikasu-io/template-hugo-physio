@@ -1,0 +1,32 @@
+# Prices for private patients and self-payers, in euros per session.
+# Statutory insurance is described in content/_index.*.md.
+- price: 32
+  minutes: 20
+  name:
+    de: Krankengymnastik
+    en: Physiotherapy
+- price: 38
+  minutes: 20
+  name:
+    de: Manuelle Therapie
+    en: Manual therapy
+- price: 42
+  minutes: 45
+  name:
+    de: Manuelle Lymphdrainage
+    en: Manual lymph drainage
+- price: 48
+  minutes: 30
+  name:
+    de: Sportphysiotherapie
+    en: Sports physiotherapy
+- price: 40
+  minutes: 60
+  name:
+    de: Gerätegestützte Krankengymnastik
+    en: Medical training therapy
+- price: 85
+  minutes: 60
+  name:
+    de: Erstbefund ohne Verordnung
+    en: First assessment without a prescription

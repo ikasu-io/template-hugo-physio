@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="section page">
+  <div class="container prose">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    <p><a href="{{ site.Home.RelPermalink }}">← {{ T "back_home" }}</a></p>
+  </div>
+</article>
+{{ end }}

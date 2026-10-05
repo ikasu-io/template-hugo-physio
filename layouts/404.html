@@ -1,0 +1,9 @@
+{{ define "main" }}
+<section class="section page">
+  <div class="container prose">
+    <p class="eyebrow">404</p>
+    <h1>{{ if eq site.Language.Lang "de" }}Diese Seite gibt es nicht.{{ else }}This page does not exist.{{ end }}</h1>
+    <p><a href="{{ site.Home.RelPermalink }}">← {{ T "back_home" }}</a></p>
+  </div>
+</section>
+{{ end }}

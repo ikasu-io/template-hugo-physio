@@ -1,0 +1,36 @@
+# Courses. Only courses that start on or after the build date are shown,
+# so old ones can stay in the file. `price` in euros for the whole course;
+# `places` is how many are left (0 shows "fully booked").
+- start: 2026-10-13
+  time: "18:00-19:00"
+  sessions: 8
+  places: 3
+  price: 120
+  name:
+    de: Rückenfit
+    en: Back fitness
+  text:
+    de: Kräftigen und Beweglichkeit für den Rücken, in kleiner Gruppe. Als Präventionskurs von den meisten Krankenkassen bezuschusst.
+    en: Strength and mobility for your back, in a small group. Most statutory insurers pay part of it as a prevention course.
+- start: 2026-11-05
+  time: "09:30-10:30"
+  sessions: 6
+  places: 0
+  price: 96
+  name:
+    de: Beckenboden nach der Geburt
+    en: Pelvic floor after birth
+  text:
+    de: Ab acht Wochen nach der Geburt, Babys dürfen mitkommen. Auf Deutsch und Englisch.
+    en: From eight weeks after birth, babies welcome. In German and English.
+- start: 2027-01-12
+  time: "19:15-20:15"
+  sessions: 6
+  places: 8
+  price: 90
+  name:
+    de: Laufen ohne Knie
+    en: Running without the knee pain
+  text:
+    de: Lauftechnik, Kraft und ein Plan für das Frühjahr. Für alle, die laufen wollen und deren Knie bisher nicht mitmachte.
+    en: Technique, strength and a plan for spring. For anyone who wants to run and whose knees haven't agreed so far.

@@ -1,0 +1,32 @@
+{{- /* A photo from assets/images/ by name, resized to WebP in several
+widths. Alt text comes from data/images.yaml.
+  name   file name without extension (required)
+  ratio  crop to this ratio, e.g. "4:5"; default: keep the photo's own
+  sizes  the `sizes` attribute; default "100vw"
+  class  CSS classes
+  eager  true for the first photo on the page */ -}}
+{{- $img := resources.GetMatch (printf "images/%s.*" .name) -}}
+{{- if not $img }}{{ errorf "assets/images/: there is no photo named %q" .name }}{{ end -}}
+{{- $alts := index hugo.Data.images .name -}}
+{{- $alt := partial "t.html" (dict "v" $alts "where" (printf "data/images.yaml, %s" .name)) -}}
+{{- $rw := 0 -}}
+{{- $rh := 0 -}}
+{{- with .ratio }}{{ $p := split . ":" }}{{ $rw = int (index $p 0) }}{{ $rh = int (index $p 1) }}{{ end -}}
+{{- $set := slice -}}
+{{- $fallback := false -}}
+{{- $widths := slice 480 800 1200 1600 -}}
+{{- range $w := $widths -}}
+  {{- if or (le $w $img.Width) (eq $w 480) -}}
+    {{- $w = cond (le $w $img.Width) $w $img.Width -}}
+    {{- $r := false -}}
+    {{- if $rw -}}
+      {{- $r = $img.Fill (printf "%dx%d webp Center" $w (div (mul $w $rh) $rw)) -}}
+    {{- else -}}
+      {{- $r = $img.Resize (printf "%dx webp" $w) -}}
+    {{- end -}}
+    {{- $set = $set | append (printf "%s %dw" $r.RelPermalink $w) -}}
+    {{- if or (not $fallback) (le $w 800) }}{{ $fallback = $r }}{{ end -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $fallback.RelPermalink }}" srcset="{{ delimit $set ", " }}" sizes="{{ .sizes | default "100vw" }}" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $alt }}"{{ with .class }} class="{{ . }}"{{ end }}{{ if .eager }} fetchpriority="high"{{ else }} loading="lazy"{{ end }} decoding="async">
+{{- /**/ -}}

@@ -1,0 +1,9 @@
+{{- /* The optional notice bar from data/practice.yaml, shown until the
+end of its `until` day as of the build. */ -}}
+{{- with hugo.Data.practice.notice -}}
+  {{- if (time.AsTime .until).AddDate 0 0 1 | (now).Before -}}
+<div class="notice" role="note">
+  <p class="container">{{ partial "t.html" (dict "v" . "where" "data/practice.yaml, notice") }}</p>
+</div>
+  {{- end -}}
+{{- end -}}

@@ -1,0 +1,27 @@
+{{- $practice := hugo.Data.practice -}}
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="{{ site.Home.RelPermalink }}">
+      {{ partial "logo.html" . }}
+      <span>{{ $practice.name }}</span>
+    </a>
+    <nav class="nav-desktop" aria-label="{{ T "menu" }}">
+      <ul>{{ partial "nav.html" . }}</ul>
+    </nav>
+    <div class="header-actions">
+      {{ range .Translations -}}
+      <a class="lang" href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}" lang="{{ .Language.Locale }}" aria-label="{{ T "switch_label" }}">{{ upper .Language.Lang }}</a>
+      {{- end }}
+      <a class="button button-small header-cta" href="{{ site.Home.RelPermalink }}#contact">{{ T "cta" }}</a>
+      <button class="menu-button" popovertarget="mobile-nav" aria-label="{{ T "menu" }}">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="nav-mobile" popover aria-label="{{ T "menu" }}">
+    <ul>
+      {{ partial "nav.html" . }}
+      <li><a class="button" href="{{ site.Home.RelPermalink }}#contact">{{ T "cta" }}</a></li>
+    </ul>
+  </nav>
+</header>

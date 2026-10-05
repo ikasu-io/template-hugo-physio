@@ -1,0 +1,28 @@
+# Ostkai Physio — site settings. The content lives in data/ and content/;
+# README.md says where to change what.
+baseURL = "https://ostkai-physio.example/"
+title = "Ostkai Physio"
+defaultContentLanguage = "de"
+# German at /, English at /en/.
+defaultContentLanguageInSubdir = false
+disableKinds = ["taxonomy", "term", "rss", "section"]
+enableRobotsTXT = true
+
+[languages.de]
+  label = "Deutsch"
+  locale = "de-DE"
+  weight = 1
+
+[languages.en]
+  label = "English"
+  locale = "en-GB"
+  weight = 2
+
+[imaging.webp]
+  quality = 72
+
+[imaging.jpeg]
+  quality = 80
+
+[module.hugoVersion]
+  min = "0.163.0"

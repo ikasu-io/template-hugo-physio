@@ -1,0 +1,22 @@
+{{- /* A drawn map of the quay — no real map service, no tracking. The
+labels follow the page language. */ -}}
+{{- $de := eq site.Language.Lang "de" -}}
+<figure class="map">
+  <svg viewBox="0 0 480 260" role="img" aria-label="{{ T "map_label" }}">
+    <rect width="480" height="260" fill="#E7EFEB"/>
+    <path d="M0 150 C120 135 220 170 330 150 S440 130 480 140 V196 C430 186 360 200 300 206 S140 190 0 206Z" fill="#B9D3D0"/>
+    <path d="M0 118 H480" stroke="#FCFCFA" stroke-width="14"/>
+    <path d="M0 118 H480" stroke="#123F3C" stroke-width="1.2" stroke-dasharray="6 6" opacity=".45"/>
+    <path d="M150 0 V118 M370 0 V118" stroke="#FCFCFA" stroke-width="10"/>
+    <rect x="200" y="58" width="96" height="44" rx="4" fill="#123F3C"/>
+    <rect x="60" y="62" width="70" height="40" rx="4" fill="#C9D9D4"/>
+    <rect x="390" y="56" width="70" height="46" rx="4" fill="#C9D9D4"/>
+    <circle cx="248" cy="80" r="7" fill="#E8A87C"/>
+    <g transform="translate(320 104)"><rect x="-11" y="-11" width="22" height="22" rx="5" fill="#A4472B"/><path d="M-4 -5h8v8h-8zM-5 6l-2 2M5 6l2 2" stroke="#FCFCFA" stroke-width="1.5" fill="none" stroke-linecap="round"/></g>
+    <text x="248" y="48" text-anchor="middle" font-size="13" font-weight="600" fill="#123F3C">{{ hugo.Data.practice.name }}</text>
+    <text x="320" y="140" text-anchor="middle" font-size="11" fill="#123F3C">{{ if $de }}Haltestelle Ostkai{{ else }}Ostkai tram stop{{ end }}</text>
+    <text x="24" y="112" font-size="11" fill="#123F3C" opacity=".75">Ostkai</text>
+    <text x="40" y="184" font-size="12" font-style="italic" fill="#123F3C" opacity=".7">{{ if $de }}Hafenkanal{{ else }}Harbour canal{{ end }}</text>
+    <text x="156" y="30" font-size="11" fill="#123F3C" opacity=".75" transform="rotate(90 156 30)">Speicherstraße</text>
+  </svg>
+</figure>

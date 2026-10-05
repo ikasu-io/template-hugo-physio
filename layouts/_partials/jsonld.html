@@ -1,0 +1,25 @@
+{{- /* Search engine data for the practice (schema.org Physiotherapy). */ -}}
+{{- $p := hugo.Data.practice -}}
+{{- $days := slice "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday" -}}
+{{- $hours := slice -}}
+{{- range $p.hours -}}
+  {{- $day := index $days (sub .day 1) -}}
+  {{- range .hours -}}
+    {{- $t := split . "-" -}}
+    {{- $hours = $hours | append (dict "@type" "OpeningHoursSpecification" "dayOfWeek" $day "opens" (index $t 0) "closes" (index $t 1)) -}}
+  {{- end -}}
+{{- end -}}
+{{- $data := dict
+  "@context" "https://schema.org"
+  "@type" "Physiotherapy"
+  "name" $p.name
+  "url" site.Home.Permalink
+  "email" $p.email
+  "description" .Description
+  "address" (dict "@type" "PostalAddress" "streetAddress" $p.address.street "postalCode" $p.address.postcode "addressLocality" $p.address.city "addressCountry" $p.address.country)
+  "openingHoursSpecification" $hours
+  "availableLanguage" (slice "de" "en" "tr" "da")
+  "isAccessibleForFree" false
+-}}
+{{- with resources.GetMatch "images/hero-practice.*" }}{{ $data = merge $data (dict "image" (.Fill "1200x630 jpg q80 Center").Permalink) }}{{ end -}}
+<script type="application/ld+json">{{ $data | jsonify | safeJS }}</script>

@@ -1,0 +1,44 @@
+# Facts about the practice. Texts that differ by language have a `de`
+# and an `en` version side by side.
+name: Ostkai Physio
+email: termine@ostkai-physio.example
+address:
+  street: Ostkai 12
+  floor:
+    de: 1. Obergeschoss, mit Aufzug
+    en: First floor, lift available
+  postcode: "39999"
+  city: Hallerbach
+  country: DE
+transport:
+  de: Straßenbahn 4 und 7, Haltestelle Ostkai (2 Minuten). Fahrradbügel vor dem Haus, Parkhaus Speicherstraße 300 m.
+  en: Tram 4 or 7 to Ostkai (2 minutes' walk). Bike racks outside, car park on Speicherstraße 300 m away.
+access:
+  de: Barrierefrei, Aufzug bis in die Praxis, rollstuhlgerechtes WC.
+  en: Step-free, a lift into the practice, wheelchair-accessible toilet.
+
+# Opening hours, Monday to Sunday. Leave `hours` empty for closed days.
+# Several ranges per day are fine: ["07:30-12:30", "14:00-19:00"].
+hours:
+  - day: 1
+    hours: ["07:30-19:00"]
+  - day: 2
+    hours: ["07:30-19:00"]
+  - day: 3
+    hours: ["07:30-13:00"]
+  - day: 4
+    hours: ["07:30-19:00"]
+  - day: 5
+    hours: ["07:30-15:00"]
+  - day: 6
+    hours: []
+  - day: 7
+    hours: []
+
+# Optional notice bar above the page, e.g. for holidays. It is shown until
+# the end of the `until` day (at build time); delete it or leave `until`
+# in the past to hide it.
+notice:
+  until: 2027-01-02
+  de: Zwischen den Jahren geschlossen — vom 24. Dezember bis 2. Januar. Termine für Januar vergeben wir schon jetzt.
+  en: Closed over the holidays — from 24 December to 2 January. We are already booking appointments for January.
